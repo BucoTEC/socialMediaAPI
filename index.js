@@ -21,6 +21,7 @@ mongoose.connect(
   }
 );
 app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use("/docs", express.static(path.join(__dirname, "public/index.html")));
 
 //middleware
 app.use(express.json());
@@ -48,6 +49,9 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
+app.use("*", (req, res) => {
+  res.redirect("/docs");
+});
 
 app.listen(8800, () => {
   console.log("Backend server is running!");

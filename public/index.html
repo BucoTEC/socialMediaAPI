@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docs</title>
+    <style>
+      body {
+        font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simple social-media API</h1>
+    <h2>Btech-solutions</h2>
+    <p>This is an API built with Express.js and Mongo.db</p>
+    <p>The server is configured to recive and send JSON data</p>
+
+    <h2>Models</h2>
+    <p>Ther are two models being used here. Post and user model.</p>
+
+    <h3>User model</h3>
+    <p>
+      username: { type: String, require: true, min: 3, max: 20, unique: true, },
+      <br />
+      email: { type: String, required: true, max: 50, unique: true, },
+      <br />
+      password: { type: String, required: true, min: 6, },
+      <br />
+      profilePicture: { type: String, default: "", },
+      <br />
+      coverPicture: { type: String, default: "", },
+      <br />
+      followers: { type: Array, default: [], },
+      <br />
+      followings: { type: Array, default: [], },
+      <br />
+
+      isAdmin: { type: Boolean, default: false, },
+      <br />
+      desc: { type: String, max: 50, },
+      <br />
+
+      city: { type: String, max: 50, },
+      <br />
+
+      from: { type: String, max: 50, },
+      <br />
+
+      relationship: { type: Number, enum: [1, 2, 3], }
+    </p>
+
+    <h3>Post model</h3>
+    <p>
+      userId: { type: String, required: true, },
+      <br />
+      desc: { type: String, max: 500, },
+      <br />
+      img: { type: String, },
+      <br />
+      likes: { type: Array, default: [], },
+    </p>
+
+    <h3>Public folder</h3>
+    <p>
+      The public folder containes images and this simple html file used for the
+      docs. You can access images using /images/NAME_OF_IMAGE
+    </p>
+
+    <h3>Routes</h3>
+    <ul>
+      <li>/api/auth</li>
+      <li>/api/users</li>
+      <li>/api/posts</li>
+    </ul>
+
+    <h3>AUTH</h3>
+    <h4>POST /register</h4>
+    <p>
+      Recives a body payload with username, email and password. Hashes password
+      saves new user to data base and sends back user info.
+    </p>
+    <h4>POST /login</h4>
+    <p>
+      Recives a body payload with email and password. Findes user based on email
+      and if password match sneds back user.
+    </p>
+
+    <h3>USERS</h3>
+    <h4>PUT /:id (updates user)</h4>
+    <p>
+      Recives body payload for update. Payload must containe userId field with
+      the corespnding user id to the path param. Sends back confirmatio or
+      declination message.
+    </p>
+    <h4>DELETE /:id (delete user)</h4>
+    <p>
+      Recives body payload for update. Payload must containe userId field with
+      the corespnding user id to the path param. Sends back confirmatio or
+      declination message.
+    </p>
+    <h4>GET / (get user)</h4>
+    <p>Find user using query params with userId or username filed.</p>
+    <h4>GET /friends/:userId (get friends)</h4>
+    <p>Returnes list of friends of current user found by userId</p>
+    <h4>PUT /:id/follow (follow a user)</h4>
+    <p>
+      Finds user by user id in req params and current user by userId send in req
+      body.
+    </p>
+    <h4>PUT /:id/unfollow (unfollow a user)</h4>
+    <p>
+      Finds user by user id in req params and current user by userId send in req
+      body.
+    </p>
+    <h3>POSTS</h3>
+    <h4>POST /</h4>
+    <p>Creates post with data from req body</p>
+    <h4>PUT /:id (update post)</h4>
+    <p>
+      Finds post by req param and compares uresId in post with userId in req
+      body. Returns success or failure message
+    </p>
+    <h4>DELETE /:id (deletes post)</h4>
+    <p>
+      Finds post by req param and compares uresId in post with userId in req
+      body. Returns success or failure message
+    </p>
+    <h4>GET /:id (get single post)</h4>
+    <h4>GET /timeline/:userId (get timeline posts)</h4>
+    <p>Findes timeline of users posts by matching path param</p>
+    <h4>PUT /:id/like (like or dislike post)</h4>
+
+    <p>
+      Findes post by path param and likes dislikes based on userId in req body
+    </p>
+  </body>
+</html>
