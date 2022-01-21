@@ -9,6 +9,14 @@
       body {
         font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI",
           Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+        margin: 0rem 15rem;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          margin: 1rem;
+        }
       }
     </style>
   </head>
@@ -20,6 +28,7 @@
 
     <h2>Models</h2>
     <p>Ther are two models being used here. Post and user model.</p>
+    <hr />
 
     <h3>User model</h3>
     <p>
@@ -51,6 +60,7 @@
 
       relationship: { type: Number, enum: [1, 2, 3], }
     </p>
+    <hr />
 
     <h3>Post model</h3>
     <p>
@@ -68,6 +78,7 @@
       The public folder containes images and this simple html file used for the
       docs. You can access images using /images/NAME_OF_IMAGE
     </p>
+    <hr />
 
     <h3>Routes</h3>
     <ul>
@@ -75,8 +86,11 @@
       <li>/api/users</li>
       <li>/api/posts</li>
     </ul>
+    <hr />
 
     <h3>AUTH</h3>
+    <hr />
+
     <h4>POST /register</h4>
     <p>
       Recives a body payload with username, email and password. Hashes password
@@ -115,7 +129,11 @@
       Finds user by user id in req params and current user by userId send in req
       body.
     </p>
+    <hr />
+
     <h3>POSTS</h3>
+    <hr />
+
     <h4>POST /</h4>
     <p>Creates post with data from req body</p>
     <h4>PUT /:id (update post)</h4>
@@ -135,6 +153,16 @@
 
     <p>
       Findes post by path param and likes dislikes based on userId in req body
+    </p>
+    <hr />
+
+    <h2>Image upload</h2>
+    <hr />
+
+    <h3>POST /api/upload</h3>
+    <p>
+      Takes a single file to upload to file sistem (on current demo version all
+      items will auto delete after 12h)
     </p>
   </body>
 </html>

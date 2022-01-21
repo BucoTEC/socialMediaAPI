@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
-const morgan = require("morgan");
 const multer = require("multer");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
@@ -12,7 +11,9 @@ const router = express.Router();
 const path = require("path");
 
 dotenv.config();
-
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
 mongoose.connect(
   process.env.MONGO_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -26,7 +27,6 @@ app.use("/docs", express.static(path.join(__dirname, "public/index.html")));
 //middleware
 app.use(express.json());
 app.use(helmet());
-app.use(morgan("common"));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -52,7 +52,7 @@ app.use("/api/posts", postRoute);
 app.use("*", (req, res) => {
   res.redirect("/docs");
 });
-
-app.listen(8800, () => {
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
   console.log("Backend server is running!");
 });
