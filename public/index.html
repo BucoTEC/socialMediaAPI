@@ -15,7 +15,7 @@
         color: whitesmoke;
       }
 
-      @media (max-width: 600px) {
+      @media (max-width: 900px) {
         body {
           margin: 1rem;
         }
@@ -24,12 +24,11 @@
   </head>
   <body>
     <h1>Simple social-media API</h1>
-    <h2>Btech-solutions</h2>
     <p>This is an API built with Express.js and Mongo.db</p>
-    <p>The server is configured to recive and send JSON data</p>
+    <p>The server is configured to receiv and send JSON data</p>
 
     <h2>Models</h2>
-    <p>Ther are two models being used here. Post and user model.</p>
+    <p>Ther are two models being used here. Post and User model.</p>
     <hr />
 
     <h3>User model</h3>
@@ -95,26 +94,27 @@
 
     <h4>POST /register</h4>
     <p>
-      Recives a body payload with username, email and password. Hashes password
-      saves new user to data base and sends back user info.
+      Receives a body payload with username, email and password. Hashes password
+      saves new user to database and sends back user info.
     </p>
     <h4>POST /login</h4>
     <p>
-      Recives a body payload with email and password. Findes user based on email
-      and if password match sneds back user.
+      Receives a body payload with email and password. Findes user based on
+      email and if password match sends back user.
     </p>
-
+    <hr />
     <h3>USERS</h3>
+    <hr />
     <h4>PUT /:id (updates user)</h4>
     <p>
-      Recives body payload for update. Payload must containe userId field with
-      the corespnding user id to the path param. Sends back confirmatio or
+      Receives body payload for update. Payload must containe userId field with
+      the matching user id to the path param. Sends back confirmation or
       declination message.
     </p>
     <h4>DELETE /:id (delete user)</h4>
     <p>
-      Recives body payload for update. Payload must containe userId field with
-      the corespnding user id to the path param. Sends back confirmatio or
+      Receives body payload for update. Payload must containe userId field with
+      the matching user id to the path param. Sends back confirmatio or
       declination message.
     </p>
     <h4>GET / (get user)</h4>
@@ -123,12 +123,12 @@
     <p>Returnes list of friends of current user found by userId</p>
     <h4>PUT /:id/follow (follow a user)</h4>
     <p>
-      Finds user by user id in req params and current user by userId send in req
+      Finds user by user id in req params and current user by userId sent in req
       body.
     </p>
     <h4>PUT /:id/unfollow (unfollow a user)</h4>
     <p>
-      Finds user by user id in req params and current user by userId send in req
+      Finds user by user id in req params and current user by userId sent in req
       body.
     </p>
     <hr />
